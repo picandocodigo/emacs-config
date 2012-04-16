@@ -9,6 +9,8 @@
      (color-theme-initialize)
      (color-theme-arjen)))
 
+(setq default-directory "~/workspace/")
+
 ;Default Tramp protocol: (ssh)
 ;(setq tramp-default-method "ssh")
 
