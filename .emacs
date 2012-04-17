@@ -49,3 +49,10 @@
 (global-set-key "\C-w" 'clipboard-kill-region)
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
 (global-set-key "\C-y" 'clipboard-yank)
+
+;HAML mode
+(require 'haml-mode)
+(add-hook 'haml-mode-hook
+					(lambda ()
+						(setq indent-tabs-mode nil)
+						(define-key haml-mode-map "\C-m" 'newline-and-indent)))
