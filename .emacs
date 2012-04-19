@@ -8,6 +8,8 @@
      (color-theme-initialize)
      (color-theme-arjen)))
 
+(setq default-directory "~/workspace/")
+
 ;Default Tramp protocol: (ssh)
 ;(setq tramp-default-method "ssh")
 
@@ -47,6 +49,14 @@
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
 (global-set-key "\C-y" 'clipboard-yank)
 
+
 ;PHP
 (add-to-list 'load-path "~/.emacs.d/")
 (require 'php-mode)
+
+;HAML mode
+(require 'haml-mode)
+(add-hook 'haml-mode-hook
+					(lambda ()
+						(setq indent-tabs-mode nil)
+						(define-key haml-mode-map "\C-m" 'newline-and-indent)))
