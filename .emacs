@@ -1,5 +1,4 @@
 ;LoadPath
-(add-to-list 'load-path' "~/.emacs.d/")
 (let ((default-directory "~/.emacs.d/"))
   (normal-top-level-add-subdirs-to-load-path))
 ;Color-theme
@@ -47,3 +46,7 @@
 (global-set-key "\C-w" 'clipboard-kill-region)
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
 (global-set-key "\C-y" 'clipboard-yank)
+
+;PHP
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'php-mode)
