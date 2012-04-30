@@ -21,6 +21,7 @@
 ;Always show whitespaces
 ;(require 'whitespace)
 ;(global-whitespace-mode t)
+(defalias 'wm 'whitespace-mode)
 
 ;No menu-bar
 (menu-bar-mode -1)
