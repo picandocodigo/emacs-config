@@ -22,6 +22,7 @@
 ;(require 'whitespace)
 ;(global-whitespace-mode t)
 (defalias 'wm 'whitespace-mode)
+(defalias 'rs 'replace-string)
 
 ;No menu-bar
 (menu-bar-mode -1)
