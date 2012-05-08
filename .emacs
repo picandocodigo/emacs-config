@@ -60,11 +60,15 @@
 ;HAML mode
 (require 'haml-mode)
 (add-hook 'haml-mode-hook
-					(lambda ()
-						(setq indent-tabs-mode nil)
-						(define-key haml-mode-map "\C-m" 'newline-and-indent)))
+  (lambda ()
+    (setq indent-tabs-mode nil)
+      (define-key haml-mode-map "\C-m" 'newline-and-indent)))
 
-;Markdown
+;YAML mode
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+;Markdown mode
 (autoload 'markdown-mode "markdown-mode.el"
    "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
