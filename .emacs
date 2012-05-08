@@ -24,6 +24,7 @@
 ;(global-whitespace-mode t)
 (defalias 'wm 'whitespace-mode)
 (defalias 'rs 'replace-string)
+(defalias 'll 'goto-line)
 
 ;No menu-bar
 (menu-bar-mode -1)
