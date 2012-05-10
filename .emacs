@@ -46,9 +46,6 @@
 (ac-config-default)
 
 ;Better copy-paste
-;(global-set-key [(shift delete)] 'clipboard-kill-region)
-;(global-set-key [(control insert)] 'clipboard-kill-ring-save)
-;(global-set-key [(shift insert)] 'clipboard-yank)
 (global-set-key "\C-w" 'clipboard-kill-region)
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
 (global-set-key "\C-y" 'clipboard-yank)
@@ -74,6 +71,7 @@
    "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
    (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\.md$" . markdown-mode))
 
 ;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
 (add-to-list 'auto-mode-alist '("\.rake$" . ruby-mode))
