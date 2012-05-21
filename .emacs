@@ -1,3 +1,4 @@
+
 ;LoadPath
 (let ((default-directory "~/.emacs.d/"))
   (normal-top-level-add-subdirs-to-load-path))
@@ -30,7 +31,8 @@
 (menu-bar-mode -1)
 
 ;Better buffer switching
-(global-set-key (kbd "\C-x\C-b") 'buffer-menu-other-window)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
 
 ;Better answer
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -80,3 +82,14 @@
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+
+;; Zencoding
+(require 'zencoding-mode)
+;; Auto-start on any markup modes
+(add-hook 'sgml-mode-hook 'zencoding-mode)
+
+;; Yasnippets
+;;(add-to-list 'load-path
+;;              "~/.emacs.d/yasnippet")
+;;(require 'yasnippet)
+;;(yas/global-mode 1)
