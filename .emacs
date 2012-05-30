@@ -20,12 +20,10 @@
 ;Don't create backup files
 (setq make-backup-files nil)
 
-;Always show whitespaces
-;(require 'whitespace)
-;(global-whitespace-mode t)
 (defalias 'wm 'whitespace-mode)
 (defalias 'rs 'replace-string)
 (defalias 'll 'goto-line)
+(defalias 'cws' 'delete-trailing-whitespace)
 
 ;No menu-bar
 (menu-bar-mode -1)
@@ -40,7 +38,9 @@
 ;Show line number
 (global-linum-mode t)
 ;Tab width
+(setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
+(setq indent-line-function 'insert-tab)
 
 ;auto-complete
 (require 'auto-complete-config)
