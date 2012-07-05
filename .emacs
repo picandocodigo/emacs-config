@@ -1,7 +1,7 @@
-
 ;LoadPath
 (let ((default-directory "~/.emacs.d/"))
   (normal-top-level-add-subdirs-to-load-path))
+
 ;Color-theme
 (require 'color-theme)
 (eval-after-load "color-theme"
@@ -11,6 +11,7 @@
      (color-theme-ld-dark)))
 
 (setq default-directory "~/workspace/")
+(set-face-attribute 'default nil :height 110)
 
 ;Default Tramp protocol: (ssh)
 ;(setq tramp-default-method "ssh")
