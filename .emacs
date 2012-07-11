@@ -11,7 +11,7 @@
      (color-theme-ld-dark)))
 
 (setq default-directory "~/workspace/")
-(set-face-attribute 'default nil :height 110)
+(set-face-attribute 'default nil :height 90)
 
 ;Default Tramp protocol: (ssh)
 ;(setq tramp-default-method "ssh")
@@ -28,6 +28,7 @@
 
 ;No menu-bar
 (menu-bar-mode -1)
+(tool-bar-mode -1)
 
 ;Better buffer switching
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -94,3 +95,11 @@
 ;;              "~/.emacs.d/yasnippet")
 ;;(require 'yasnippet)
 ;;(yas/global-mode 1)
+
+;; -----------------------------------------------------------------------------
+;; Git support
+;; -----------------------------------------------------------------------------
+(load "git.el")
+(load "git-blame.el")
+(load "vc-git.el")
+(add-to-list 'vc-handled-backends 'GIT)
