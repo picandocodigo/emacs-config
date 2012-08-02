@@ -121,14 +121,21 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ecb-options-version "2.40"))
+ '(ecb-layout-name "left2")
+ '(ecb-tip-of-the-day nil)
+ '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
+ '(ecb-layout-window-sizes (quote (("left2" (ecb-directories-buffer-name 0.25 . 0.49056603773584906) (ecb-sources-buffer-name 0.25 . 0.49056603773584906)))))
+ '(ecb-options-version "2.40")
+ '(ecb-source-path (quote (("/" "/") ("/home/fernando/workspace/cubox" "cubox")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-'(ecb-source-path (quote ("~/workspace")))
-'(ecb-tip-of-the-day nil)
-'(ecb-tree-buffer-style (quote ascii-guides))
-'(ecb-layout-define "left2"))
+
+;; Lua mode
+(add-to-list 'load-path "~/.emacs.d/lua-mode/lua-mode.el")
+(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+(add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
