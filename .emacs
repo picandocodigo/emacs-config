@@ -8,7 +8,9 @@
   '(progn
      (color-theme-initialize)
      ;(color-theme-arjen)))
-     (color-theme-ld-dark)))
+     ;(color-theme-gray30)))
+     ;(color-theme-ld-dark)))
+     (color-theme-kingsajz)))
 
 (setq default-directory "~/workspace/")
 (set-face-attribute 'default nil :height 90)
@@ -58,6 +60,11 @@
 ;PHP
 (add-to-list 'load-path "~/.emacs.d/")
 (require 'php-mode)
+
+(add-hook 'php-mode-hook'
+  (lambda ()
+  (c-set-offset 'arglist-intro '-)
+  (c-set-offset 'arglist-close 0)))
 
 ;HAML mode
 (require 'haml-mode)
@@ -118,3 +125,6 @@
 
 ;; JS indenting
 (setq js-indent-level 2)
+
+;; ido mode
+(ido-mode t)
