@@ -128,3 +128,6 @@
 
 ;; ido mode
 (ido-mode t)
+
+;; acute-to-html
+(load "custom_libs/acute-to-html.el")
