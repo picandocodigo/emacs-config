@@ -131,6 +131,8 @@
 
 ;; acute-to-html
 (load "custom_libs/acute-to-html.el")
+;; update ruby-hashes
+(load "custom_libs/ruby-update-hash.el")
 
 (defun move-line-region-up (start end n)
   (interactive "r\np")
