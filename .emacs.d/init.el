@@ -51,7 +51,14 @@
 (ac-config-default)
 
 ;xmp -> comments the return of a method (needs rcodetools gem) (M-') 
-;; Paredit - install this for parens
+;; Paredit
+(autoload 'paredit-mode "paredit"
+  "Minor mode for pseudo-structurally editing Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
+(add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
+(add-hook 'ruby-mode-hook             (lambda () (paredit-mode +1)))
+(add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
+(add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
 
 ;PHP
 (add-to-list 'load-path "~/.emacs.d/")
@@ -120,6 +127,7 @@
 
 ;; testing
 ;; C-c t m - one test, f - file, r - rake
+
 ;; visit-source
 
 ;; acute-to-html
@@ -128,6 +136,15 @@
 (load "custom_libs/ruby-update-hash.el")
 
 
-;; Keys in separate file for conflicts
 ;; Use C-J for newlines in code
+
 ;; Add something to duplicate lines without using C-k C-y
+(defun duplicate-line()
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (open-line 1)
+  (next-line 1)
+  (yank)
+)

@@ -13,6 +13,9 @@
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "M-h") 'backward-kill-word)
 
+;; Duplicate line
+(global-set-key (kbd "C-c C-d") 'duplicate-line)
+
 ;; Move Region
 (global-set-key (kbd "M-p") 'move-region-up)
 (global-set-key (kbd "M-n") 'move-region-down)
