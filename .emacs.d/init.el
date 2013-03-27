@@ -1,6 +1,11 @@
 ;LoadPath
 (let ((default-directory "~/.emacs.d/"))
-  (normal-top-level-add-subdirs-to-load-path))
+  (normal-top-level-add-subdirs-to-load-path)
+  )
+;;Keys
+(load-library "~/.emacs.d/key-bindings")
+;;Move region
+(load-library "~/.emacs.d/move-region")
 
 ;Color-theme
 (require 'color-theme)
@@ -22,23 +27,11 @@
 (setq inhibit-startup-message t)
 ;Don't create backup files
 (setq make-backup-files nil)
-
-(defalias 'wm 'whitespace-mode)
-(defalias 'rs 'replace-string)
-(defalias 'll 'goto-line)
-(defalias 'cws' 'delete-trailing-whitespace)
-
 ;No menu-bar
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-
-;Better buffer switching
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(autoload 'ibuffer "ibuffer" "List buffers." t)
-
 ;Better answer
 (fset 'yes-or-no-p 'y-or-n-p)
-
 ;Show line number
 (global-linum-mode t)
 ;Tab width
@@ -46,21 +39,19 @@
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
 
+;Better buffer switching
+(autoload 'ibuffer "ibuffer" "List buffers." t)
+
+;; ido mode
+(ido-mode t)
+
 ;auto-complete
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
 (ac-config-default)
 
-;Better copy-paste
-(global-set-key "\C-w" 'clipboard-kill-region)
-(global-set-key "\M-w" 'clipboard-kill-ring-save)
-(global-set-key "\C-y" 'clipboard-yank)
-
-;Backspace deleting
-(global-set-key (kbd "C-.") 'help-command)
-(global-set-key (kbd "M-?") 'mark-paragraph)
-(global-set-key (kbd "C-h") 'delete-backward-char)
-(global-set-key (kbd "M-h") 'backward-kill-word)
+;xmp -> comments the return of a method (needs rcodetools gem) (M-') 
+;; Paredit - install this for parens
 
 ;PHP
 (add-to-list 'load-path "~/.emacs.d/")
@@ -98,24 +89,21 @@
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("ERB$" . html-mode))
 
-;; Zencoding
-(require 'zencoding-mode)
-;; Auto-start on any markup modes
-(add-hook 'sgml-mode-hook 'zencoding-mode)
+;; JS indenting
+(setq js-indent-level 2)
 
 ;; Yasnippets
-;;(add-to-list 'load-path
-;;              "~/.emacs.d/yasnippet")
-;;(require 'yasnippet)
-;;(yas/global-mode 1)
+(add-to-list 'load-path
+              "~/.emacs.d/yasnippet")
+(require 'yasnippet)
+(yas/global-mode 1)
 
 ;; -----------------------------------------------------------------------------
 ;; Git support
 ;; -----------------------------------------------------------------------------
-(load "git.el")
-(load "git-blame.el")
-;;(load "vc-git.el")
-(add-to-list 'vc-handled-backends 'GIT)
+;;Add magit
+
+;; Get Flymake
 
 ;; Lua mode
 (add-to-list 'load-path "~/.emacs.d/lua-mode/lua-mode.el")
@@ -128,44 +116,18 @@
   `(("." . ,(expand-file-name
     (concat user-emacs-directory "backups")))))
 
-;; JS indenting
-(setq js-indent-level 2)
 
-;; ido mode
-(ido-mode t)
+
+;; testing
+;; C-c t m - one test, f - file, r - rake
+;; visit-source
 
 ;; acute-to-html
 (load "custom_libs/acute-to-html.el")
 ;; update ruby-hashes
 (load "custom_libs/ruby-update-hash.el")
 
-(defun move-line-region-up (start end n)
-  (interactive "r\np")
-  (if (region-active-p) (move-region-up start end n) (move-line-up n)))
 
-(defun move-line-region-down (start end n)
-  (interactive "r\np")
-  (if (region-active-p) (move-region-down start end n) (move-line-down n)))
-
-(defun move-region (start end n)
-  "Move the current region up or down by N lines."
-  (interactive "r\np")
-  (let ((line-text (delete-and-extract-region start end)))
-    (forward-line n)
-    (let ((start (point)))
-      (insert line-text)
-      (setq deactivate-mark nil)
-      (set-mark start))))
-
-(defun move-region-up (start end n)
-  "Move the current line up by N lines."
-  (interactive "r\np")
-  (move-region start end (if (null n) -1 (- n))))
-
-(defun move-region-down (start end n)
-  "Move the current line down by N lines."
-  (interactive "r\np")
-  (move-region start end (if (null n) 1 n)))
-
-(global-set-key (kbd "M-p") 'move-region-up)
-(global-set-key (kbd "M-n") 'move-region-down)
+;; Keys in separate file for conflicts
+;; Use C-J for newlines in code
+;; Add something to duplicate lines without using C-k C-y
