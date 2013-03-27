@@ -4,8 +4,6 @@
   )
 ;;Keys
 (load-library "~/.emacs.d/key-bindings")
-;;Move region
-(load-library "~/.emacs.d/move-region")
 
 ;Color-theme
 (require 'color-theme)
@@ -27,6 +25,10 @@
 (setq inhibit-startup-message t)
 ;Don't create backup files
 (setq make-backup-files nil)
+(setq backup-directory-alist
+  `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+  `((".*" ,temporary-file-directory t)))
 ;No menu-bar
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -51,6 +53,7 @@
 (ac-config-default)
 
 ;xmp -> comments the return of a method (needs rcodetools gem) (M-') 
+
 ;; Paredit
 (autoload 'paredit-mode "paredit"
   "Minor mode for pseudo-structurally editing Lisp code." t)
@@ -91,7 +94,8 @@
 (add-to-list 'auto-mode-alist '("\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\.gemspec$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\.ru$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("ERB$" . html-mode))
@@ -111,6 +115,7 @@
 ;;Add magit
 
 ;; Get Flymake
+(require 'flymake)
 
 ;; Lua mode
 (add-to-list 'load-path "~/.emacs.d/lua-mode/lua-mode.el")
@@ -123,8 +128,6 @@
   `(("." . ,(expand-file-name
     (concat user-emacs-directory "backups")))))
 
-
-
 ;; testing
 ;; C-c t m - one test, f - file, r - rake
 
@@ -135,16 +138,24 @@
 ;; update ruby-hashes
 (load "custom_libs/ruby-update-hash.el")
 
+;;Move region
+(load-library "~/.emacs.d/move-region")
+;; Duplicate lines without using C-k C-y
+(load-library "~/.emacs.d/duplicate-lines")
 
 ;; Use C-J for newlines in code
+(require 'flymake)
 
-;; Add something to duplicate lines without using C-k C-y
-(defun duplicate-line()
-  (interactive)
-  (move-beginning-of-line 1)
-  (kill-line)
-  (yank)
-  (open-line 1)
-  (next-line 1)
-  (yank)
-)
+(set-face-background 'flymake-errline "red4")
+(set-face-background 'flymake-warnline "dark slate blue")
+;; Invoke ruby with '-c' to get syntax checking
+(defun flymake-ruby-init ()
+  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
+    'flymake-create-temp-inplace))
+    (local-file  (file-relative-name
+                       temp-file
+                       (file-name-directory buffer-file-name))))
+  (list "ruby" (list "-c" local-file))))
+(push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
+(push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+(push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns)

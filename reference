@@ -1,0 +1,11 @@
+Command help:
+C-h f function-name
+
+C-h w function-name
+Where the key is
+
+C-h c key-sequence
+What function is bound to a key sequence
+
+Key sequence (key bindings):
+C-h k key-sequence
