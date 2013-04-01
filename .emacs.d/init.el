@@ -2,6 +2,7 @@
 (let ((default-directory "~/.emacs.d/"))
   (normal-top-level-add-subdirs-to-load-path)
   )
+
 ;;Keys
 (load-library "~/.emacs.d/key-bindings")
 
@@ -52,7 +53,7 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
 (ac-config-default)
 
-;xmp -> comments the return of a method (needs rcodetools gem) (M-') 
+;xmp -> comments the return of a method (needs rcodetools gem) (M-')
 
 ;; Paredit
 (autoload 'paredit-mode "paredit"
@@ -142,6 +143,9 @@
 (load-library "~/.emacs.d/move-region")
 ;; Duplicate lines without using C-k C-y
 (load-library "~/.emacs.d/duplicate-lines")
+(load-library "~/.emacs.d/indent-buffer")
+(add-hook 'before-save-hook 'indent-buffer-and-delete-trailing-whitespace)
+
 
 ;; Use C-J for newlines in code
 (require 'flymake)
