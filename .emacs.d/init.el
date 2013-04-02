@@ -37,6 +37,8 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 ;Show line number
 (global-linum-mode t)
+;Highlight current line
+(global-hl-line-mode +1)
 ;Tab width
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
