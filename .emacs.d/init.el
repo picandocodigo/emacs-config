@@ -50,7 +50,7 @@
 
 ;auto-complete
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
 ;xmp -> comments the return of a method (needs rcodetools gem) (M-')
@@ -63,6 +63,17 @@
 (add-hook 'ruby-mode-hook             (lambda () (paredit-mode +1)))
 (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
+
+;; ;; flymake-easy
+;; (add-to-list 'load-path "~/.emacs.d/flymake-easy")
+;; (require 'flymake-easy)
+
+;; ;; Ruby
+;; (add-to-list 'load-path "~/.emacs.d/flymake-ruby")
+;; (require 'flymake-ruby)
+;; (add-hook 'ruby-mode-hook 'flymake-ruby-load)
+(load-library "~/.emacs.d/ruby-end")
+(require 'ruby-end)
 
 ;PHP
 (add-to-list 'load-path "~/.emacs.d/")
@@ -115,9 +126,6 @@
 ;; -----------------------------------------------------------------------------
 ;;Add magit
 
-;; Get Flymake
-(require 'flymake)
-
 ;; Lua mode
 (add-to-list 'load-path "~/.emacs.d/lua-mode/lua-mode.el")
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
@@ -148,18 +156,3 @@
 
 
 ;; Use C-J for newlines in code
-(require 'flymake)
-
-(set-face-background 'flymake-errline "red4")
-(set-face-background 'flymake-warnline "dark slate blue")
-;; Invoke ruby with '-c' to get syntax checking
-(defun flymake-ruby-init ()
-  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
-    'flymake-create-temp-inplace))
-    (local-file  (file-relative-name
-                       temp-file
-                       (file-name-directory buffer-file-name))))
-  (list "ruby" (list "-c" local-file))))
-(push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns)
