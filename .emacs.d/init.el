@@ -67,13 +67,13 @@
 (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
 
 ;; ;; flymake-easy
-;; (add-to-list 'load-path "~/.emacs.d/flymake-easy")
-;; (require 'flymake-easy)
+(add-to-list 'load-path "~/.emacs.d/flymake-easy")
+(require 'flymake-easy)
 
 ;; ;; Ruby
-;; (add-to-list 'load-path "~/.emacs.d/flymake-ruby")
-;; (require 'flymake-ruby)
-;; (add-hook 'ruby-mode-hook 'flymake-ruby-load)
+(add-to-list 'load-path "~/.emacs.d/flymake-ruby")
+(require 'flymake-ruby)
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
 (load-library "~/.emacs.d/ruby-end")
 (require 'ruby-end)
 
@@ -154,7 +154,7 @@
 ;; Duplicate lines without using C-k C-y
 (load-library "~/.emacs.d/duplicate-lines")
 (load-library "~/.emacs.d/indent-buffer")
-(add-hook 'before-save-hook 'indent-buffer-and-delete-trailing-whitespace)
+;;(add-hook 'before-save-hook 'indent-buffer-and-delete-trailing-whitespace)
 
 
 ;; Use C-J for newlines in code
