@@ -9,3 +9,5 @@ What function is bound to a key sequence
 
 Key sequence (key bindings):
 C-h k key-sequence
+
+Use C-J for newlines in code

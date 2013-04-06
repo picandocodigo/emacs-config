@@ -26,5 +26,4 @@
 (defalias 'll 'goto-line)
 (defalias 'rbhash 'ruby-update-hash)
 (defalias 'evb 'eval-buffer)
-; do this on save
-(defalias 'cws' 'delete-trailing-whitespace)
+(defalias 'cws 'delete-trailing-whitespace)
