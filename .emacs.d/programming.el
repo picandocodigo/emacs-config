@@ -1,3 +1,7 @@
+;; Magit
+(setq load-path (append (list "~/.emacs.d/magit") load-path))
+(require 'magit)
+
 ;; Paredit
 (autoload 'paredit-mode "paredit"
   "Minor mode for pseudo-structurally editing Lisp code." t)
