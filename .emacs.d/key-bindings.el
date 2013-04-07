@@ -19,6 +19,8 @@
 ;; Move Region
 (global-set-key (kbd "M-p") 'move-region-up)
 (global-set-key (kbd "M-n") 'move-region-down)
+;; Magit
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; Aliases
 (defalias 'wm 'whitespace-mode)
