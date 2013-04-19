@@ -3,9 +3,9 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; Better copy-paste
-(global-set-key "\C-w" 'clipboard-kill-region)
-(global-set-key "\M-w" 'clipboard-kill-ring-save)
-(global-set-key "\C-y" 'clipboard-yank)
+(global-set-key (kbd "C-w") 'clipboard-kill-region)
+(global-set-key (kbd "M-w") 'clipboard-kill-ring-save)
+(global-set-key (kbd "C-y") 'clipboard-yank)
 
 ;; Backspace deleting
 (global-set-key (kbd "C-.") 'help-command)
@@ -15,6 +15,8 @@
 
 ;; Duplicate line
 (global-set-key (kbd "C-c d") 'duplicate-line)
+;; Vim's Esc-o
+(global-set-key (kbd "C-c o") 'next-line-and-indent)
 
 ;; Move Region
 (global-set-key (kbd "M-p") 'move-region-up)

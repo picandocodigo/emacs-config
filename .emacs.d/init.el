@@ -53,14 +53,14 @@
   `(("." . ,(expand-file-name
     (concat user-emacs-directory "backups")))))
 
-;;Keys
-(load "key-bindings")
 ;;Move region
 (load "move-region")
 ;; acute-to-html
 (load "custom_libs/acute-to-html.el")
 ;; update ruby-hashes
 (load "custom_libs/ruby-update-hash.el")
+;; next line and indent
+(load "custom_libs/next-line-and-indent.el")
 ;; Duplicate lines without using C-k C-y
 (load "duplicate-lines")
 ;; Programming
@@ -70,3 +70,6 @@
 (require 'visual-regexp)
 (define-key global-map (kbd "C-c r") 'vr/replace)
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
+
+;;Keys
+(load "key-bindings")
