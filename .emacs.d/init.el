@@ -64,13 +64,8 @@
 ;; Duplicate lines without using C-k C-y
 (load "duplicate-lines")
 ;; Programming
-
 (load "programming")
-;; visual regexp
-(load "visual-regexp.el")
-(require 'visual-regexp)
-(define-key global-map (kbd "C-c r") 'vr/replace)
-(define-key global-map (kbd "C-c q") 'vr/query-replace)
+
 
 ;;Keys
 (load "key-bindings")
