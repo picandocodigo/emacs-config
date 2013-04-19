@@ -64,6 +64,7 @@
 ;; Duplicate lines without using C-k C-y
 (load "duplicate-lines")
 ;; Programming
+
 (load "programming")
 ;; visual regexp
 (load "visual-regexp.el")

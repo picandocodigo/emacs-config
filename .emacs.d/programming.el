@@ -10,8 +10,10 @@
 (add-hook 'ruby-mode-hook             (lambda () (paredit-mode +1)))
 (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
 (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
+;; Paredit fix
+(load "paredit-fix")
 
-;; ;; flymake-easy
+;; flymake-easy
 (load "flymake-easy")
 (require 'flymake-easy)
 
@@ -33,6 +35,7 @@
   (lambda ()
     (setq indent-tabs-mode nil)
       (define-key haml-mode-map "\C-m" 'newline-and-indent)))
+(add-to-list 'auto-mode-alist '("haml" . haml-mode))
 
 ;YAML mode
 (require 'yaml-mode)
@@ -55,7 +58,11 @@
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("ERB$" . html-mode))
 
-;; JS indenting
+;; Sass
+(add-to-list 'auto-mode-alist '("\.scss$" . css-mode))
+(add-to-list 'auto-mode-alist '("\.sass$" . css-mode))
+
+;; JavaScript
 (setq js-indent-level 2)
 
 ;; Yasnippets
