@@ -14,9 +14,12 @@
      (color-theme-gray30)))
      ;(color-theme-ld-dark)))
      ;(color-theme-kingsajz)))
+
 (add-to-list 'load-path "~/.emacs.d/nyan-mode")
 (require 'nyan-mode)
 (setq-default nyan-wavy-trail t)
+(nyan-mode)
+(nyan-start-animation)
 
 
 (setq default-directory "~/workspace/")
