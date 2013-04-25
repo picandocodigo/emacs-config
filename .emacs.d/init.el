@@ -21,7 +21,6 @@
 (nyan-mode)
 (nyan-start-animation)
 
-
 (setq default-directory "~/workspace/")
 (set-face-attribute 'default nil :height 90)
 
@@ -45,6 +44,15 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 ;Better buffer switching
 (autoload 'ibuffer "ibuffer" "List buffers." t)
+;; Ensure ibuffer opens with point at the current buffer's entry.
+(defadvice ibuffer
+  (around ibuffer-point-to-most-recent) ()
+  "Open ibuffer with cursor pointed to most recent buffer name."
+  (let ((recent-buffer-name (buffer-name)))
+    ad-do-it
+    (ibuffer-jump-to-buffer recent-buffer-name)))
+(ad-activate 'ibuffer)
+
 
 ;; ido mode
 (ido-mode t)
