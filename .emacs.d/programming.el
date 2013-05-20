@@ -2,16 +2,9 @@
 (setq load-path (append (list "~/.emacs.d/magit") load-path))
 (require 'magit)
 
-;; Paredit
-(autoload 'paredit-mode "paredit"
-  "Minor mode for pseudo-structurally editing Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
-(add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
-(add-hook 'ruby-mode-hook             (lambda () (paredit-mode +1)))
-(add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
-(add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
-;; Paredit fix
-(load "paredit-fix")
+;; Autopair
+(require 'autopair)
+(autopair-global-mode) ;; enable autopair in all buffers
 
 ;; flymake-easy
 (load "flymake-easy")

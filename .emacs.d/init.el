@@ -15,12 +15,6 @@
      ;(color-theme-ld-dark)))
      ;(color-theme-kingsajz)))
 
-(add-to-list 'load-path "~/.emacs.d/nyan-mode")
-(require 'nyan-mode)
-(setq-default nyan-wavy-trail t)
-(nyan-mode)
-(nyan-start-animation)
-
 (setq default-directory "~/workspace/")
 (set-face-attribute 'default nil :height 90)
 
@@ -76,6 +70,8 @@
 (load "custom_libs/ruby-update-hash.el")
 ;; next line and indent
 (load "custom_libs/next-line-and-indent.el")
+;; nyan cat
+(load "nyan.el")
 ;; Duplicate lines without using C-k C-y
 (load "duplicate-lines")
 ;; Programming
