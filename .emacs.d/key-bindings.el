@@ -24,6 +24,10 @@
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
+;; Search
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+
 ;; Aliases
 (defalias 'wm 'whitespace-mode)
 (defalias 'rs 'replace-string)

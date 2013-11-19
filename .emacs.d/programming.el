@@ -57,6 +57,8 @@
 
 ;; JavaScript
 (setq js-indent-level 2)
+
+;; CSS
 (setq css-indent-offset 2)
 
 ;; Yasnippets
@@ -70,14 +72,7 @@
 (add-to-list 'ac-dictionary-directories "ac-dict")
 (ac-config-default)
 
-
 ;xmp -> comments the return of a method (needs rcodetools gem) (M-')
-
-
-;; -----------------------------------------------------------------------------
-;; Git support
-;; -----------------------------------------------------------------------------
-;;Add magit
 
 ;; Lua mode
 (add-to-list 'load-path "~/.emacs.d/lua-mode/lua-mode.el")

@@ -4,15 +4,18 @@
   )
 (setq load-path (append (list "~/.emacs.d") load-path))
 
+(require 'tramp)
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
 
 ;Color-theme
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
+     ;(color-theme-gray30)))
      ;(color-theme-arjen)))
-     (color-theme-gray30)))
-     ;(color-theme-ld-dark)))
+     (color-theme-ld-dark)))
      ;(color-theme-kingsajz)))
 
 (setq default-directory "~/workspace/")
@@ -80,3 +83,9 @@
 
 ;;Keys
 (load "key-bindings")
+
+;; Marmalade packages
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
