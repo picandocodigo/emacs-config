@@ -17,11 +17,6 @@
 (load-library "ruby-end")
 (require 'ruby-end)
 
-;PHP
-(load "~/.emacs.d/nxhtml/autostart.el")
-(setq mumamo-background-colors nil)
-(setq mumamo-chunk-coloring 'no-chunks-colored)
-
 ;HAML mode
 (require 'haml-mode)
 (add-hook 'haml-mode-hook
@@ -60,6 +55,9 @@
 
 ;; CSS
 (setq css-indent-offset 2)
+
+;; PHP
+(require 'php-mode)
 
 ;; Yasnippets
 (add-to-list 'load-path

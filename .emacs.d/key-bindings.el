@@ -28,6 +28,9 @@
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 
+;; Comment
+(global-set-key (kbd "C-c C-c") 'comment-or-uncomment-region)
+
 ;; Aliases
 (defalias 'wm 'whitespace-mode)
 (defalias 'rs 'replace-string)
