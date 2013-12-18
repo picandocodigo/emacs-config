@@ -36,6 +36,9 @@
    (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 (add-to-list 'auto-mode-alist '("\.md$" . markdown-mode))
 
+(require 'handlebars-mode)
+(add-to-list 'auto-mode-alist '("\.hb$" . handlebars-mode))
+
 ;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
 (add-to-list 'auto-mode-alist '("\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\.gemspec$" . ruby-mode))
@@ -54,7 +57,7 @@
 (setq js-indent-level 2)
 
 ;; CSS
-(setq css-indent-offset 2)
+(setq css-indent-level 2)
 
 ;; PHP
 (require 'php-mode)
