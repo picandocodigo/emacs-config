@@ -93,14 +93,16 @@
 
 ;; MELPA packages
 (add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(when (< emacs-major-version 24)
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 (package-initialize)
 (defvar my-packages '(
                       phi-rectangle
                       coffee-mode
                       inf-ruby
-                      php+-mode
+                      php-mode
                       magit
                       paredit
                       yasnippet
