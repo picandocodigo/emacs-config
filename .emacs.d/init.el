@@ -37,6 +37,8 @@
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
 
+(global-visual-line-mode t)
+
 ;Better answer
 (fset 'yes-or-no-p 'y-or-n-p)
 ;Better buffer switching
@@ -94,3 +96,16 @@
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (package-initialize)
+(defvar my-packages '(
+                      phi-rectangle
+                      coffee-mode
+                      inf-ruby
+                      php+-mode
+                      magit
+                      paredit
+                      yasnippet
+                      ))
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
