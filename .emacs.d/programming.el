@@ -6,14 +6,10 @@
 (require 'autopair)
 (autopair-global-mode) ;; enable autopair in all buffers
 
-;; flymake-easy
-(load "flymake-easy")
-(require 'flymake-easy)
+;; flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Ruby
-(load-library "flymake-ruby")
-(require 'flymake-ruby)
-(add-hook 'ruby-mode-hook 'flymake-ruby-load)
 (load-library "ruby-end")
 (require 'ruby-end)
 

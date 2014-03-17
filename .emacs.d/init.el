@@ -81,7 +81,8 @@
 (load "duplicate-lines")
 ;; Programming
 (load "programming")
-
+;; Org-mode
+(load "orgmode")
 
 ;;Keys
 (load "key-bindings")
@@ -111,3 +112,5 @@
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+(setq ac-source-yasnippet nil)
