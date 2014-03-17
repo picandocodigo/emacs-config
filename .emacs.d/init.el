@@ -9,7 +9,6 @@
 (setq uniquify-buffer-name-style 'forward)
 
 ;Color-theme
-(require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
@@ -28,14 +27,20 @@
 ;No menu-bar
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-;Show line number
-(global-linum-mode t)
 ;Highlight current line
 (global-hl-line-mode +1)
 ;Tab width
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
+;Show trailing whitespace
+(defun show-ws-and-linum-on-files ()
+  "Show trailing whitespace and line numbers on files only"
+  (interactive)
+  (when (not (eq buffer-file-name nil))
+    (setq show-trailing-whitespace t)
+    (linum-mode 1)))
+(add-hook 'after-change-major-mode-hook 'show-ws-and-linum-on-files)
 
 (global-visual-line-mode t)
 
@@ -107,6 +112,7 @@
                       magit
                       paredit
                       yasnippet
+                      flycheck
                       ))
 
 (dolist (p my-packages)
@@ -114,3 +120,4 @@
     (package-install p)))
 
 (setq ac-source-yasnippet nil)
+
