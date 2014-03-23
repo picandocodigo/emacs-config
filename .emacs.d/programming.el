@@ -62,11 +62,6 @@
 (require 'yasnippet)
 (yas/global-mode 1)
 
-;auto-complete
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "ac-dict")
-(ac-config-default)
-
 ;xmp -> comments the return of a method (needs rcodetools gem) (M-')
 
 ;; Lua mode

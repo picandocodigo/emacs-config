@@ -9,13 +9,7 @@
 (setq uniquify-buffer-name-style 'forward)
 
 ;Color-theme
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     ;(color-theme-gray30)))
-     ;(color-theme-arjen)))
-     (color-theme-ld-dark)))
-     ;(color-theme-kingsajz)))
+(load-theme 'deeper-blue t)
 
 (setq default-directory "~/workspace/")
 (set-face-attribute 'default nil :height 90)
@@ -113,6 +107,7 @@
                       paredit
                       yasnippet
                       flycheck
+                      auto-complete
                       ))
 
 (dolist (p my-packages)
@@ -120,4 +115,3 @@
     (package-install p)))
 
 (setq ac-source-yasnippet nil)
-
