@@ -42,6 +42,7 @@
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Thorfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("ERB$" . html-mode))
 
@@ -62,13 +63,19 @@
 (require 'yasnippet)
 (yas/global-mode 1)
 
-;xmp -> comments the return of a method (needs rcodetools gem) (M-')
+;; Projectile
+(require 'projectile)
+(projectile-global-mode)
 
-;; Lua mode
-(add-to-list 'load-path "~/.emacs.d/lua-mode/lua-mode.el")
-(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
-(add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+;; Beautify JSON:
+(defun beautify-json ()
+  (interactive)
+  (let ((b (if mark-active (min (point) (mark)) (point-min)))
+        (e (if mark-active (max (point) (mark)) (point-max))))
+    (shell-command-on-region b e
+      "python -mjson.tool" (current-buffer) t)))
+
+;xmp -> comments the return of a method (needs rcodetools gem) (M-')
 
 ;; testing
 ;; C-c t m - one test, f - file, r - rake
