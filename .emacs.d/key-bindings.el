@@ -31,6 +31,9 @@
 ;; Comment
 (global-set-key (kbd "C-c C-c") 'comment-or-uncomment-region)
 
+;; Reload files
+(global-set-key (kbd "C-c r") 'revert-buffer-no-confirm)
+
 ;; Aliases
 (defalias 'wm 'whitespace-mode)
 (defalias 'rs 'replace-string)

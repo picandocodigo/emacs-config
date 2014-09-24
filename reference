@@ -11,3 +11,21 @@ Key sequence (key bindings):
 C-h k key-sequence
 
 Use C-J for newlines in code
+
+Describe variable:
+M-x describe-variable
+
+Command history variable:
+command-history
+
+Describe active modes:
+M-x describe-mode
+
+
+
+Update Packages
+
+To update packages, just press 【U x】.
+
+    package-menu-mark-upgrades 【U】 → For any package that has a new version, the installed one will be marked “D” (for delete), and new one will be marked “I” (to install).
+    package-menu-execute 【x】 → run the marked commands on packages.

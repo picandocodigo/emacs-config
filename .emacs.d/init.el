@@ -18,12 +18,13 @@
 
 ;Don't show intro
 (setq inhibit-startup-message t)
+
 ;No menu-bar
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 ;Highlight current line
 (global-hl-line-mode +1)
-;Tab width
+;;Tab width
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
@@ -55,16 +56,23 @@
 ;; ido mode
 (ido-mode t)
 
-;Don't create backup files
-(setq make-backup-files nil)
-(setq backup-directory-alist
-  `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-  `((".*" ,temporary-file-directory t)))
-;; Write backup files to own directory
-(setq backup-directory-alist
-  `(("." . ,(expand-file-name
-    (concat user-emacs-directory "backups")))))
+;;Backup files
+(setq backup-directory-alist `((".*" . ,"~/.emacs.d/backups")))
+(setq backup-by-copying t)
+
+;; Auto-saves
+(defvar my-auto-save-folder "~/.emacs.d/saves/");
+(setq auto-save-list-file-prefix "~/.emacs.d/auto-save/.saves-")
+(setq auto-save-file-name-transforms `((".*" ,my-auto-save-folder t)))
+(setq tramp-auto-save-directory my-auto-save-folder)
+
+
+;; Reload file
+;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
+(defun revert-buffer-no-confirm ()
+    "Revert buffer without confirmation."
+    (interactive)
+    (revert-buffer t))
 
 ;;Move region
 (load "move-region")
@@ -108,6 +116,8 @@
                       yasnippet
                       flycheck
                       auto-complete
+                      projectile
+                      grizzl
                       ))
 
 (dolist (p my-packages)
