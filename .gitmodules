@@ -1,3 +1,3 @@
 [submodule ".emacs.d/custom_libs"]
-	path = .emacs.d/custom_libs
+	path = .emacs.d/packages/custom_libs
 	url = git@github.com:picandocodigo/emacs-elisp.git

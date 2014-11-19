@@ -1,10 +1,14 @@
 ;; Magit
-(setq load-path (append (list "~/.emacs.d/magit") load-path))
-(require 'magit)
+;;(setq load-path (append (list "~/.emacs.d/magit") load-path))
+;;(require 'magit)
 
 ;; Autopair
 (require 'autopair)
 (autopair-global-mode) ;; enable autopair in all buffers
+
+;; Autocomplete
+(require 'auto-complete)
+(global-auto-complete-mode t)
 
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -61,7 +65,7 @@
 (add-hook 'php-mode-hook 'my-php-mode-hook)
 (defun my-php-mode-hook ()
   "My PHP mode configuration."
-  (setq indent-tabs-mode 1
+  (setq indent-tabs-mode 0
         tab-width 2
         c-basic-offset 2))
 
@@ -81,7 +85,7 @@
     (shell-command-on-region b e
       "python -mjson.tool" (current-buffer) t)))
 
-;xmp -> comments the return of a method (needs rcodetools gem) (M-')
+;;xmp -> comments the return of a method (needs rcodetools gem) (M-')
 
 ;; testing
 ;; C-c t m - one test, f - file, r - rake
