@@ -116,6 +116,7 @@
                       yasnippet
                       flycheck
                       auto-complete
+                      markdown-mode
                       ))
 
 (dolist (p my-packages)
