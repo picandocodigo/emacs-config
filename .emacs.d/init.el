@@ -54,7 +54,18 @@
 
 
 ;; ido mode
-(ido-mode t)
+(require 'ido)
+(ido-mode 1)
+(ido-everywhere 1)
+(require 'ido-ubiquitous)
+(ido-ubiquitous-mode 1)
+
+;; Smex (Built on top of Ido, it provides a convenient interface to
+;; your recently and most frequently used commands)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+;;(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;;Backup files
 (setq backup-directory-alist `((".*" . ,"~/.emacs.d/backups")))
@@ -117,12 +128,16 @@
                       flycheck
                       auto-complete
                       markdown-mode
+                      alchemist
+                      elixir-mode
+                      web-mode
+                      ido-ubiquitous
+                      smex
                       ))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
-
 (setq ac-source-yasnippet nil)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
