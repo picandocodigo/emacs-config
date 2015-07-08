@@ -93,8 +93,11 @@
 (load "custom_libs/ruby-update-hash.el")
 ;; next line and indent
 (load "custom_libs/next-line-and-indent.el")
-;; nyan cat
-(load "nyan.el")
+;; nyan-mode
+(load "repos/nyan-mode/nyan-mode.el")
+(nyan-mode)
+(setq-default nyan-wavy-trail t)
+(nyan-start-animation)
 ;; Duplicate lines without using C-k C-y
 (load "duplicate-lines")
 ;; Programming
