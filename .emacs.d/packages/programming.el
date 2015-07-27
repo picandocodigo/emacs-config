@@ -16,9 +16,13 @@
 ;; Ruby
 (load-library "ruby-end")
 (require 'ruby-end)
+(require 'rspec-mode)
+(require 'rvm)
+(rvm-use-default)
 
 ;; ERB:
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("ERB$" . web-mode))
 
 ;HAML mode
 (require 'haml-mode)
@@ -51,15 +55,12 @@
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Thorfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("ERB$" . html-mode))
 
 ;; Sass
 (add-to-list 'auto-mode-alist '("\.scss$" . css-mode))
 (add-to-list 'auto-mode-alist '("\.sass$" . css-mode))
-
 ;; JavaScript
 (setq js-indent-level 2)
-
 ;; CSS
 (setq css-indent-level 2)
 
@@ -72,13 +73,18 @@
         tab-width 2
         c-basic-offset 2))
 
+;; Web-mode
+(defun web-mode-indentation-hook ()
+  "Hooks for Web mode."
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+)
+(add-hook 'web-mode-hook  'web-mode-indentation-hook)
+
 ;; Yasnippets
 (require 'yasnippet)
 (yas/global-mode 1)
-
-;; Projectile
-(require 'projectile)
-(projectile-global-mode)
 
 ;; Beautify JSON:
 (defun beautify-json ()

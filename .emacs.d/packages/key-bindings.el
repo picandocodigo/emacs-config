@@ -1,3 +1,7 @@
+;;; key-bindings --- My set of custom key-bindings for Emacs
+;;; Commentary:
+;;; No comments
+;;; Code:
 (require 'compile)
 ;; Ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -34,6 +38,16 @@
 ;; Reload files
 (global-set-key (kbd "C-c r") 'revert-buffer-no-confirm)
 
+;; Smex (Built on top of Ido, it provides a convenient interface to
+;; your recently and most frequently used commands)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+;;(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+;; Switch windows with ace-window
+(global-set-key (kbd "C-x o") 'ace-window)
+
 ;; Aliases
 (defalias 'wm 'whitespace-mode)
 (defalias 'rs 'replace-string)
@@ -41,3 +55,5 @@
 (defalias 'rbhash 'ruby-update-hash)
 (defalias 'evb 'eval-buffer)
 (defalias 'cws 'delete-trailing-whitespace)
+(provide 'key-bindings)
+;;; key-bindings ends here
