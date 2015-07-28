@@ -97,6 +97,8 @@
 (load "programming")
 ;; Org-mode
 (load "orgmode")
+;; Custom Mode line
+(load "modeline-custom")
 ;;Keys
 (load "key-bindings")
 
