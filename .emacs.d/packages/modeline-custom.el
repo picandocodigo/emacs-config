@@ -3,11 +3,11 @@
 (setq-default
  mode-line-format
  '(; Position, including warning for 80 columns
-   (:propertize "%1l" face mode-line-position-face)
+   (:propertize mode-line-position-face)
 
    ; emacsclient [default -- keep?]
    mode-line-client
-   "  "
+   " "
    ; read-only or modified status
    (:eval
     (cond (buffer-read-only
@@ -25,7 +25,7 @@
    " %n"
    ; mode indicators: vc, recursive edit, major mode, minor modes, process, global
    (vc-mode vc-mode)
-   "%["
+   " %["
    (:propertize mode-name
                  face mode-line-mode-face)
    "%]"
@@ -59,7 +59,6 @@
 (make-face 'mode-line-modified-face)
 (make-face 'mode-line-folder-face)
 (make-face 'mode-line-filename-face)
-(make-face 'mode-line-position-face)
 (make-face 'mode-line-mode-face)
 (make-face 'mode-line-minor-mode-face)
 (make-face 'mode-line-process-face)
@@ -85,24 +84,18 @@
     :box '(:line-width 2 :color "#c82829"))
 (set-face-attribute 'mode-line-folder-face nil
     :inherit 'mode-line-face
-    :foreground "gray60")
+    :foreground "#6b7c50")
 (set-face-attribute 'mode-line-filename-face nil
     :inherit 'mode-line-face
-    :foreground "#eab700"
+    :foreground "#b8c12b"
     :weight 'bold)
-(set-face-attribute 'mode-line-position-face nil
-    :inherit 'mode-line-face
-    :family "Menlo" :height 80)
 (set-face-attribute 'mode-line-mode-face nil
     :inherit 'mode-line-face
     :foreground "gray80")
 (set-face-attribute 'mode-line-minor-mode-face nil
     :inherit 'mode-line-mode-face
-    :foreground "gray40"
+    :foreground "gray70"
     :height 80)
 (set-face-attribute 'mode-line-process-face nil
     :inherit 'mode-line-face
     :foreground "#718c00")
-(set-face-attribute 'mode-line-80col-face nil
-    :inherit 'mode-line-position-face
-    :foreground "black" :background "#eab700")
