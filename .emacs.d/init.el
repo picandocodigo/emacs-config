@@ -10,9 +10,13 @@
 
 ;Color-theme
 (load-theme 'deeper-blue t)
+;Active frame
+(require 'hiwin)
+(hiwin-activate)
+(set-face-background 'hiwin-face "#000000")
 
 (setq default-directory "~/workspace/")
-(set-face-attribute 'default nil :height 90)
+;(set-face-attribute 'default nil :height 90)
 
 (delete-selection-mode 1)
 
@@ -133,6 +137,7 @@
                       rspec-mode
                       rvm
                       ace-window
+                      hiwin
                       ))
 
 (dolist (p my-packages)

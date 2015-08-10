@@ -46,7 +46,8 @@
 ;;(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;; Switch windows with ace-window
-(global-set-key (kbd "C-x o") 'ace-window)
+(global-set-key (kbd "C-x x o") 'ace-window)
+
 
 ;; Aliases
 (defalias 'wm 'whitespace-mode)
