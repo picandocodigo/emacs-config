@@ -45,10 +45,8 @@
 ;; This is your old M-x.
 ;;(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-;; Switch windows with ace-window
-(global-set-key (kbd "C-x x o") 'ace-window)
-
-
+;; Multiple cursors
+(global-set-key (kbd "C-c m") 'mc/mark-all-like-this-dwim)
 ;; Aliases
 (defalias 'wm 'whitespace-mode)
 (defalias 'rs 'replace-string)
@@ -56,5 +54,6 @@
 (defalias 'rbhash 'ruby-update-hash)
 (defalias 'evb 'eval-buffer)
 (defalias 'cws 'delete-trailing-whitespace)
+(defalias 'qq 'single-quote-toggle)
 (provide 'key-bindings)
 ;;; key-bindings ends here

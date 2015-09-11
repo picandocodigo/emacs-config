@@ -4,7 +4,8 @@
 
 ;; Autopair
 (require 'autopair)
-(autopair-global-mode) ;; enable autopair in all buffers
+;; enable autopair in all buffers
+(autopair-global-mode)
 
 ;; Autocomplete
 (require 'auto-complete)
@@ -17,6 +18,7 @@
 (load-library "ruby-end")
 (require 'ruby-end)
 (require 'rspec-mode)
+(setq rspec-use-rake-when-possible t)
 (require 'rvm)
 (rvm-use-default)
 
@@ -93,6 +95,12 @@
         (e (if mark-active (max (point) (mark)) (point-max))))
     (shell-command-on-region b e
       "python -mjson.tool" (current-buffer) t)))
+
+;; Narrowing modes:
+(require 'narrow-reindent)
+(narrow-reindent-mode)
+(require 'fancy-narrow)
+(fancy-narrow-mode)
 
 ;;xmp -> comments the return of a method (needs rcodetools gem) (M-')
 

@@ -16,7 +16,7 @@
 (set-face-background 'hiwin-face "#000000")
 
 (setq default-directory "~/workspace/")
-;(set-face-attribute 'default nil :height 90)
+(set-face-attribute 'default nil :height 100)
 
 (delete-selection-mode 1)
 
@@ -90,6 +90,7 @@
 (load "custom_libs/ruby-update-hash.el")
 ;; next line and indent
 (load "custom_libs/next-line-and-indent.el")
+(load "custom_libs/single-quote.el")
 ;; nyan-mode
 (load "repos/nyan-mode/nyan-mode.el")
 (nyan-mode)
@@ -136,8 +137,10 @@
                       smex
                       rspec-mode
                       rvm
-                      ace-window
                       hiwin
+                      fancy-narrow
+                      narrow-reindent
+                      multiple-cursors
                       ))
 
 (dolist (p my-packages)
@@ -149,10 +152,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default))))
+)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'narrow-to-region 'disabled nil)
