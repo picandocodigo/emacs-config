@@ -1,3 +1,44 @@
+					; list the packages you want
+(setq package-list '(
+		     coffee-mode
+		     inf-ruby
+		     php-mode
+		     magit
+		     paredit
+		     yasnippet
+		     flycheck
+		     auto-complete
+		     markdown-mode
+		     alchemist
+		     elixir-mode
+		     web-mode
+		     ido-ubiquitous
+		     smex
+		     rspec-mode
+		     rvm
+		     hiwin
+		     fancy-narrow
+		     narrow-reindent
+		     )
+      )
+
+; list the repositories containing them
+(setq package-archives '(("elpa" . "http://tromey.com/elpa/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")
+			 ("melpa" . "http://melpa.milkbox.net/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")))
+
+; activate all the packages (in particular autoloads)
+(package-initialize)
+
+; fetch the list of packages available 
+(unless package-archive-contents
+  (package-refresh-contents))
+
+; install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 ;LoadPath
 (let ((default-directory "~/.emacs.d/"))
   (normal-top-level-add-subdirs-to-load-path)
@@ -107,47 +148,6 @@
 ;;Keys
 (load "key-bindings")
 
-;; Marmalade packages
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-
-;; MELPA packages
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(when (< emacs-major-version 24)
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-
-(package-initialize)
-(defvar my-packages '(
-                      phi-rectangle
-                      coffee-mode
-                      inf-ruby
-                      php-mode
-                      magit
-                      paredit
-                      yasnippet
-                      flycheck
-                      auto-complete
-                      markdown-mode
-                      alchemist
-                      elixir-mode
-                      web-mode
-                      ido-ubiquitous
-                      smex
-                      rspec-mode
-                      rvm
-                      hiwin
-                      fancy-narrow
-                      narrow-reindent
-                      multiple-cursors
-                      ))
-
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
-(setq ac-source-yasnippet nil)
-(custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.

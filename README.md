@@ -4,6 +4,13 @@
     <img src="https://raw.github.com/picandocodigo/emacs-config/master/logo.png" alt="Emacs" />
 </div>
 
+```
+$ git clone git@github.com:picandocodigo/emacs-config.git
+$ cd emacs-config
+$ git submodule init
+$ git submodule update
+```
+
 ## Quickguide
 
 `reference.org` - is a reference card for commands and other helpful stuff.
