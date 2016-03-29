@@ -1,3 +1,6 @@
 [submodule ".emacs.d/custom_libs"]
 	path = .emacs.d/packages/custom_libs
 	url = git@github.com:picandocodigo/emacs-elisp.git
+[submodule ".emacs.d/packages/repos/nyan-mode"]
+	path = .emacs.d/packages/repos/nyan-mode
+	url = git@github.com:TeMPOraL/nyan-mode.git
