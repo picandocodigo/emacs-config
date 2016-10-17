@@ -1,31 +1,31 @@
 ; list the packages you want
 (setq package-list '(
-		     coffee-mode
-		     inf-ruby
-		     php-mode
-		     magit
-		     paredit
-		     yasnippet
-		     flycheck
-		     auto-complete
-		     markdown-mode
-		     alchemist
-		     elixir-mode
-		     web-mode
-		     ido-ubiquitous
-		     smex
-		     rspec-mode
-		     rvm
-		     hiwin
-		     fancy-narrow
-		     narrow-reindent
-		     )
+         coffee-mode
+         inf-ruby
+         magit
+         paredit
+         yasnippet
+         flycheck
+         auto-complete
+         markdown-mode
+         alchemist
+         elixir-mode
+         web-mode
+         ido-ubiquitous
+         smex
+         rspec-mode
+         rvm
+         hiwin
+         fancy-narrow
+         narrow-reindent
+         ibuffer-vc
+         )
       )
 
 ; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
-			 ("melpa" . "http://melpa.milkbox.net/packages/")
+       ("melpa" . "http://melpa.milkbox.net/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 
 ; activate all the packages (in particular autoloads)
@@ -86,16 +86,29 @@
 
 ;Better answer
 (fset 'yes-or-no-p 'y-or-n-p)
-;Better buffer switching
+
+;; IBUFFER
+;;Better buffer switching
 (autoload 'ibuffer "ibuffer" "List buffers." t)
 ;; Ensure ibuffer opens with point at the current buffer's entry.
 (defadvice ibuffer
-  (around ibuffer-point-to-most-recent) ()
-  "Open ibuffer with cursor pointed to most recent buffer name."
-  (let ((recent-buffer-name (buffer-name)))
-    ad-do-it
-    (ibuffer-jump-to-buffer recent-buffer-name)))
+    (around ibuffer-point-to-most-recent) ()
+    "Open ibuffer with cursor pointed to most recent buffer name."
+    (let ((recent-buffer-name (buffer-name)))
+      ad-do-it
+      (ibuffer-jump-to-buffer recent-buffer-name)))
 (ad-activate 'ibuffer)
+(setq ibuffer-expert t)
+(add-hook 'ibuffer-mode-hook
+          '(lambda ()
+             (ibuffer-auto-mode 1)
+             (ibuffer-switch-to-saved-filter-groups "home")))
+;; ibuffer-vc
+(add-hook 'ibuffer-hook
+          (lambda ()
+            (ibuffer-vc-set-filter-groups-by-vc-root)
+            (unless (eq ibuffer-sorting-mode 'alphabetic)
+              (ibuffer-do-sort-by-alphabetic))))
 
 
 ;; ido mode

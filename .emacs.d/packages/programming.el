@@ -22,10 +22,6 @@
 (require 'rvm)
 (rvm-use-default)
 
-;; ERB:
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("ERB$" . web-mode))
-
 ;HAML mode
 (require 'haml-mode)
 (add-hook 'haml-mode-hook
@@ -66,16 +62,13 @@
 ;; CSS
 (setq css-indent-level 2)
 
-;; PHP
-(require 'php-mode)
-(add-hook 'php-mode-hook 'my-php-mode-hook)
-(defun my-php-mode-hook ()
-  "My PHP mode configuration."
-  (setq indent-tabs-mode nil
-        tab-width 2
-        c-basic-offset 2))
-
 ;; Web-mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("ERB$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (defun web-mode-indentation-hook ()
   "Hooks for Web mode."
   (setq web-mode-markup-indent-offset 2)
