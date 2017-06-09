@@ -19,6 +19,8 @@
          fancy-narrow
          narrow-reindent
          ibuffer-vc
+         emojify
+         all-the-icons
          )
       )
 
@@ -27,6 +29,9 @@
                          ("gnu" . "http://elpa.gnu.org/packages/")
        ("melpa" . "http://melpa.milkbox.net/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
+
+; Emojify
+(add-hook 'after-init-hook #'global-emojify-mode)
 
 ; activate all the packages (in particular autoloads)
 (package-initialize)
@@ -50,7 +55,7 @@
 (setq uniquify-buffer-name-style 'forward)
 
 ;Color-theme
-(load-theme 'deeper-blue t)
+(load-theme 'challenger-deep t)
 ;Active frame
 (require 'hiwin)
 (hiwin-activate)

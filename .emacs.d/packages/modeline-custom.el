@@ -7,15 +7,21 @@
 
    ; emacsclient [default -- keep?]
    mode-line-client
-   " "
    ; read-only or modified status
    (:eval
     (cond (buffer-read-only
-           (propertize " RO " 'face 'mode-line-read-only-face))
+           (propertize "  " 'face 'mode-line-read-only-face))
           ((buffer-modified-p)
-           (propertize " * " 'face 'mode-line-modified-face))
-          (t " ")))
-   " "
+           (propertize "  " 'face 'mode-line-modified-face))
+          (t " " )))
+   " %["
+   (:propertize mode-name
+                 face mode-line-mode-face)
+   "%] "
+   (format " %s"
+    (propertize icon
+                'help-echo (format "Major-mode: `%s`" major-mode)
+                'face `(:height 1.2 :family ,(all-the-icons-icon-family-for-buffer))))
    ; directory and buffer/file name
    (:propertize (:eval (shorten-directory default-directory 5))
                 face mode-line-folder-face)
@@ -24,19 +30,9 @@
    ; narrow [default -- keep?]
    " %n"
    ; mode indicators: vc, recursive edit, major mode, minor modes, process, global
-   (vc-mode vc-mode)
-   " %["
-   (:propertize mode-name
-                 face mode-line-mode-face)
-   "%]"
-
-   "    "
+   " "(vc-mode vc-mode)"  "
    ; nyan-mode uses nyan cat as an alternative to %p
    (:eval (when nyan-mode (list (nyan-create))))
-      (:eval (propertize (format-mode-line minor-mode-alist)
-                      'face 'mode-line-minor-mode-face))
-   (:propertize mode-line-process
-                face mode-line-process-face)
    (global-mode-string global-mode-string)
    ))
 
@@ -75,23 +71,25 @@
 
 (set-face-attribute 'mode-line-read-only-face nil
     :inherit 'mode-line-face
-    :foreground "#4271ae"
-    :box '(:line-width 2 :color "#4271ae"))
+    :foreground "#33f"
+    :background "#001"
+    :box '(:line-width 2 :color "#33f"))
 (set-face-attribute 'mode-line-modified-face nil
     :inherit 'mode-line-face
-    :foreground "#c82829"
-    :background "#ffffff"
-    :box '(:line-width 2 :color "#c82829"))
+    :foreground "#f00"
+    :background "#000"
+    :box '(:line-width 2 :color "#700"))
 (set-face-attribute 'mode-line-folder-face nil
     :inherit 'mode-line-face
-    :foreground "#6b7c50")
+    :foreground "#6b7c50"
+    :background "#000")
 (set-face-attribute 'mode-line-filename-face nil
-    :inherit 'mode-line-face
+    :inherit 'mode-line-folder-face
     :foreground "#b8c12b"
     :weight 'bold)
 (set-face-attribute 'mode-line-mode-face nil
     :inherit 'mode-line-face
-    :foreground "gray80")
+    :foreground "#ff0")
 (set-face-attribute 'mode-line-minor-mode-face nil
     :inherit 'mode-line-mode-face
     :foreground "gray70"

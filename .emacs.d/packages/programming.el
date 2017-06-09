@@ -14,6 +14,9 @@
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
+;; Smerge always active for conflicts
+(smerge-mode)
+
 ;; Ruby
 (load-library "ruby-end")
 (require 'ruby-end)
@@ -68,14 +71,22 @@
 (add-to-list 'auto-mode-alist '("ERB$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (defun web-mode-indentation-hook ()
   "Hooks for Web mode."
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
+  (setq web-mode-enable-css-colorization t)
 )
 (add-hook 'web-mode-hook  'web-mode-indentation-hook)
+(setq web-mode-enable-current-element-highlight t)
+(setq web-mode-enable-current-column-highlight t)
+(setq web-mode-ac-sources-alist
+  '(("css" . (ac-source-css-property))
+    ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
 
 ;; Yasnippets
 (require 'yasnippet)
